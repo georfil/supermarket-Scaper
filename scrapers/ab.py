@@ -87,7 +87,7 @@ class AbScraper(BaseScraper):
 
         async with aiohttp.ClientSession() as session:
 
-            data = await self._fetch_page(session, 1)
+            data = await self._fetch_page(session, 1, sem)
             for product in self._parse_products(data):
                 yield product
             total_pages = data['data']['categoryProductSearch']['pagination']['totalPages']
