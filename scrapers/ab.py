@@ -43,22 +43,33 @@ class AbScraper(BaseScraper):
         Returns:
             A list of Product objects, or an empty list if parsing fails.
         """
+        unit_mapping = {
+            "τεμ" : "τεμάχιο",
+            "λιτ" : "λίτρο",
+            "κιλ" : "κιλό",
+            "μεζ" : "δόση",
+            "μ2" : "τ.μ."
+        }
+
         try:
             products = data['data']['categoryProductSearch']['products']
         except TypeError:
             return []
 
-        return [Product(
-            product_id = product.get("code", None),
-            title = product.get("name", None),
-            brand = product.get("manufacturerName", "ΑΒ"),
-            supermarket = "AB",
-            price = product.get("price", {}).get("value", None),
-            price_per_unit = product.get("price", {}).get("unitPrice", None),
-            unit = product.get("price", {}).get("unit", None),
-            url = product.get("url", None),
-        ) 
-        for product in products]
+        for product in products:
+            price_per_unit = product.get("price", {}).get("supplementaryPriceLabel1", None).split(" ")
+
+            yield Product(
+                product_id = product.get("code", None),
+                title = product.get("name", None),
+                brand = product.get("manufacturerName", "ΑΒ"),
+                supermarket = "AB",
+                price = product.get("price", {}).get("value", None),
+                price_per_unit = float(price_per_unit[0].replace(".","").replace(",",".")),
+                unit = unit_mapping[price_per_unit[2]],
+                url = product.get("url", None),
+            ) 
+      
 
 
     async def _fetch_page(self, session: aiohttp.ClientSession, page: int, sem: asyncio.Semaphore) -> dict:

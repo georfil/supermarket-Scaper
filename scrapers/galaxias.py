@@ -4,7 +4,7 @@ import asyncio
 import aiohttp
 import requests
 
-class GalaxiasScarper(BaseScraper):
+class GalaxiasScraper(BaseScraper):
 
     def __init__(self):
         self.url = "https://galaxias.shop/api/graphql"

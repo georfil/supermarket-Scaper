@@ -1,14 +1,14 @@
 import asyncio
-from scrapers import AbScraper, SklavenitisScraper, GalaxiasScarper, MyMarketScraper
+from scrapers import AbScraper, SklavenitisScraper, GalaxiasScraper, MyMarketScraper
 from dataclasses import asdict
 import time
 import pandas as pd
 
 SCRAPERS = [
     AbScraper(),
-    SklavenitisScraper(),
-    GalaxiasScarper(),
-    MyMarketScraper()
+    # SklavenitisScraper(),
+    # GalaxiasScraper(),
+    # MyMarketScraper()
 ]
 
 
@@ -26,7 +26,7 @@ async def main():
     print(f"Scraped {len(products)} products in {time.perf_counter()-start:.2f} seconds!")
 
     df = pd.DataFrame([asdict(p) for p in products])
-    df.to_excel("testing/output.xlsx", index=False)
+    df.to_excel("testing/output_ab.xlsx", index=False)
 
 if __name__ == "__main__":
     asyncio.run(main())
