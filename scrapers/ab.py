@@ -4,6 +4,7 @@ from models.product import Product
 from json import dumps
 import aiohttp
 import asyncio
+from utils.progress import track
 
 class AbScraper(BaseScraper):
 
@@ -43,13 +44,6 @@ class AbScraper(BaseScraper):
         Returns:
             A list of Product objects, or an empty list if parsing fails.
         """
-        unit_mapping = {
-            "τεμ" : "τεμάχιο",
-            "λιτ" : "λίτρο",
-            "κιλ" : "κιλό",
-            "μεζ" : "δόση",
-            "μ2" : "τ.μ."
-        }
 
         try:
             products = data['data']['categoryProductSearch']['products']
@@ -63,11 +57,11 @@ class AbScraper(BaseScraper):
                 product_id = product.get("code", None),
                 title = product.get("name", None),
                 brand = product.get("manufacturerName", "ΑΒ"),
-                supermarket = "AB",
+                supermarket = "ab",
                 price = product.get("price", {}).get("value", None),
                 price_per_unit = float(price_per_unit[0].replace(".","").replace(",",".")),
-                unit = unit_mapping[price_per_unit[2]],
-                url = product.get("url", None),
+                unit = price_per_unit[2] if len(price_per_unit)>2 else None,
+                url = "https://www.ab.gr" + product.get("url", None) if product.get("url", None) else None,
             ) 
       
 
@@ -87,7 +81,8 @@ class AbScraper(BaseScraper):
             async with session.get(self.url, headers=self.headers, params=self._get_params(page)) as response:
                 data = await response.json() 
                 return data
-
+            
+    @track(desc="AB", unit="product")
     async def fetch_products(self) -> AsyncGenerator[Product, None]:
         """Fetches all products from the AB supermarket API concurrently.
 
@@ -103,8 +98,8 @@ class AbScraper(BaseScraper):
                 yield product
             total_pages = data['data']['categoryProductSearch']['pagination']['totalPages']
 
-            pages = await asyncio.gather(*[self._fetch_page(session, page, sem) for page in range(2,total_pages+1)])
-
-            for data in pages:
+            tasks = [self._fetch_page(session, page, sem) for page in range(2, total_pages + 1)]
+            for coro in asyncio.as_completed(tasks):
+                data = await coro
                 for product in self._parse_products(data):
                     yield product

@@ -21,6 +21,7 @@ class Product:
     product_type_level_1: str | None = None
     product_type_level_2: str | None = None
     product_type_level_3: str | None = None
+    unique_product_id: str | None = None
 
 
     

@@ -1,32 +1,30 @@
 import asyncio
 from scrapers import AbScraper, SklavenitisScraper, GalaxiasScraper, MyMarketScraper
-from dataclasses import asdict
-import time
+from pipeline import run_all_scrapers, clean_products
 import pandas as pd
+from models.product import Product
+
 
 SCRAPERS = [
     AbScraper(),
-    # SklavenitisScraper(),
-    # GalaxiasScraper(),
-    # MyMarketScraper()
+    SklavenitisScraper(),
+    GalaxiasScraper(),
+    MyMarketScraper()
 ]
 
 
-async def run_scraper(scraper):
-    return [product async for product in scraper.fetch_products()]
- 
-
 async def main():
-    products = []
-    start = time.perf_counter()
-    scraper_results = await asyncio.gather(*[run_scraper(scraper) for scraper in SCRAPERS])
-    for results in scraper_results:
-        for product in results:
-            products.append(product)
-    print(f"Scraped {len(products)} products in {time.perf_counter()-start:.2f} seconds!")
+    scraper_results = await run_all_scrapers(SCRAPERS)
+    # scraper_results = pd.read_excel("testing/output.xlsx")
+    # scraper_results = scraper_results.where(scraper_results.notna(), other=None)
+    # scraper_results = [Product(**row) for row in scraper_results.to_dict(orient="records")]
 
-    df = pd.DataFrame([asdict(p) for p in products])
-    df.to_excel("testing/output_ab.xlsx", index=False)
+    clean_results = clean_products(scraper_results)
+
+    from db.repository import save_products
+
+    save_products(clean_results)
+
 
 if __name__ == "__main__":
     asyncio.run(main())

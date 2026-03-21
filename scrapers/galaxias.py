@@ -3,6 +3,7 @@ from models.product import Product
 import asyncio
 import aiohttp
 import requests
+from utils.progress import track
 
 class GalaxiasScraper(BaseScraper):
 
@@ -162,6 +163,7 @@ class GalaxiasScraper(BaseScraper):
             url = "https://galaxias.shop/product/"+ product['sku'],
         )
     
+    @track(desc="Galaxias", unit="product")
     async def fetch_products(self):
         brands = self.getBrands()
 
@@ -171,8 +173,9 @@ class GalaxiasScraper(BaseScraper):
         
             total_pages = self._fetch_total_pages()
 
-            products_pages = await asyncio.gather(*[self._fetch_page(session, page, sem) for page in range(1, total_pages+1)])
-            for product_page in products_pages:
+            tasks = [self._fetch_page(session, page, sem) for page in range(1, total_pages + 1)]
+            for coro in asyncio.as_completed(tasks):
+                product_page = await coro
                 for product in product_page:
                     yield self._parse_product(product, brands)
             

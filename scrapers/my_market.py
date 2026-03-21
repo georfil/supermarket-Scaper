@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import json
 import aiohttp
 import asyncio
+from utils.progress import track
 
 
 class MyMarketScraper(BaseScraper):
@@ -27,7 +28,6 @@ class MyMarketScraper(BaseScraper):
         async with sem:
             while True:
                 url = category_url.format(page)
-                print(url)
                 async with session.get(url) as response:
                     html = await response.text()
                     soup = BeautifulSoup(html, 'html.parser')
@@ -64,13 +64,14 @@ class MyMarketScraper(BaseScraper):
             url= product["url"]
         )
     
+    @track(desc="My Market", unit="product")
     async def fetch_products(self):
         categories = self._fetch_categories()
         sem = asyncio.Semaphore(10)
 
         async with aiohttp.ClientSession() as session:
-            products_of_all_categories = await asyncio.gather(*[self._fetch_products_of_category(cat, session, sem) for cat in categories])
-        
-        for products_of_category in products_of_all_categories:
-            for product in products_of_category:
-                yield self._parse_product(product)
+            tasks = [self._fetch_products_of_category(cat, session, sem) for cat in categories]
+            for coro in asyncio.as_completed(tasks):
+                products_of_category = await coro
+                for product in products_of_category:
+                    yield self._parse_product(product)

@@ -6,6 +6,7 @@ import aiohttp
 from json import loads
 import requests
 import asyncio
+from utils.progress import track
 
 class SklavenitisScraper(BaseScraper):
 
@@ -71,23 +72,21 @@ class SklavenitisScraper(BaseScraper):
         
         async with sem:
             page = 1
-            print (category_url)
             total_products = []
             while True:
-                print(page)
                 current_page_url = category_url.format(page)
                 async with session.get(current_page_url) as response:
                     html = await response.text()
                     soup = BeautifulSoup(html, 'html.parser')
                     product_list = soup.find('div', attrs={'id':'productList'}).section.find_all('div', attrs={'class':'product'})
-                    print(current_page_url)
                     if len(product_list) == 0:                       
                         break
                     total_products.extend(product_list)              
                 page +=1
 
             return total_products
-
+        
+    @track(desc="Sklavenitis", unit="product")
     async def fetch_products(self) -> AsyncGenerator[Product, None]:
         """
         Fetches all products from Sklavenitis.
@@ -98,8 +97,9 @@ class SklavenitisScraper(BaseScraper):
         categories_url = self._fetch_categories()
         async with aiohttp.ClientSession() as session:
             
-            products_list = await asyncio.gather(*[self._fetch_category(session, category_url, sem) for category_url in categories_url])
-            for product_list_of_category in products_list:
+            tasks = [self._fetch_category(session, category_url, sem) for category_url in categories_url]
+            for coro in asyncio.as_completed(tasks):
+                product_list_of_category = await coro
                 for product in product_list_of_category:
                     yield self._parse_product(product)
                     
