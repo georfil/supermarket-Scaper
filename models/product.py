@@ -24,4 +24,19 @@ class Product:
     unique_product_id: str | None = None
 
 
+
+@dataclass
+class ProductUrl:
+    """
+    Class for supermarket products urls
+    
+    """
+    product_id: str
+    supermarket: str
+    url: str
+
+
+
+
+
     

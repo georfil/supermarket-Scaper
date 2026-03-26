@@ -1,8 +1,10 @@
 import asyncio
-from scrapers import AbScraper, SklavenitisScraper, GalaxiasScraper, MyMarketScraper
-from pipeline import run_all_scrapers, clean_products
-import pandas as pd
-from models.product import Product
+from config import setup_logging
+from scrapers.main import *
+from pipeline.main import run_all_scrapers, clean_products
+from db.main import run_db_pipeline
+
+setup_logging()
 
 
 SCRAPERS = [
@@ -21,9 +23,10 @@ async def main():
 
     clean_results = clean_products(scraper_results)
 
-    from db.repository import save_products
+    if not clean_results:
+        return
 
-    save_products(clean_results)
+    run_db_pipeline(clean_results)
 
 
 if __name__ == "__main__":

@@ -6,4 +6,3 @@ openpyxl
 sqlalchemy
 pyodbc
 python-dotenv
-tqdm
