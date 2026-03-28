@@ -1,5 +1,0 @@
-from scrapers.details.ab_details import AbScraperDetails
-from scrapers.details.sklavenitis_details import SklavenitisScraperDetails
-from scrapers.details.galaxias_details import GalaxiasScraperDetails
-from scrapers.details.my_market_details import MyMarketScraperDetails
-from scrapers.details.base_details import BaseScraperDetails

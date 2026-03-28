@@ -26,3 +26,7 @@ DB_URL = (
     f"mssql+pyodbc://{DB_USERNAME}:{DB_PASSWORD}@{DB_SERVER}/{DB_DATABASE}"
     f"?driver={pick_driver().replace(' ', '+')}"
 )
+
+LLM_MODEL = "gpt-4o-mini"
+
+

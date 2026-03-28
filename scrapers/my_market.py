@@ -1,47 +1,62 @@
 from scrapers.base import BaseScraper
-from models.product import Product
-import requests
+from models import Product
+from typing import AsyncGenerator
+from utils.http import fetch_text
 from bs4 import BeautifulSoup
 import json
 import aiohttp
 import asyncio
-from utils.progress import track
+import logging
 
+
+logger = logging.getLogger(__name__)
 
 class MyMarketScraper(BaseScraper):
 
-    def _fetch_categories(self) -> list[str]:
+    async def _fetch_categories(self, session: aiohttp.ClientSession) -> list[str]:
         """Fetches product categories of My Market
-        
+
         Returns:
             List of urls, regarding product categories
         """
-        url = "https://www.mymarket.gr/sitemap/categories-tree"
-        html = requests.get(url).text
-        soup = BeautifulSoup(html, 'html.parser')
-        categories = list(filter(lambda x:"offer" not in x,[h2.a["href"] + "?perPage=100&page={}" for h2 in soup.find_all("h2") ]))
-        return categories
+        try:
+            html = await fetch_text(session, "https://www.mymarket.gr/sitemap/categories-tree")
+            soup = BeautifulSoup(html, 'html.parser')
+            return list(filter(lambda x: "offer" not in x, [h2.a["href"] + "?perPage=100&page={}" for h2 in soup.find_all("h2")]))
+        except (AttributeError, TypeError):
+            logger.exception("Unexpected structure when fetching categories")
+            raise
     
-    async def _fetch_products_of_category(self, category_url:str, session:aiohttp.ClientSession, sem: asyncio.Semaphore):
+    async def _fetch_products_of_category(self, category_url: str, session: aiohttp.ClientSession) -> list[dict]:
         page = 1
         products = []
-        async with sem:
-            while True:
-                url = category_url.format(page)
-                async with session.get(url) as response:
-                    html = await response.text()
-                    soup = BeautifulSoup(html, 'html.parser')
-                    products_of_page = [{
-                        **json.loads(article["data-google-analytics-item-value"]),
-                        **{"url":article.a.get("href", None)},
-                        **{"price_per_unit":list(filter(lambda x: x != '' ,article.find("div", attrs={"class":"measurment-unit-row"}).text.strip().split("\n"))) }
-                    }
-                    for article in soup.find_all("article")]
-                    if len(products_of_page) == 0:
-                        return products
-                    products.extend(products_of_page)
-                    
-                page +=1
+        while True:
+            url = category_url.format(page)
+            try:
+                async with self.sem:
+                    html = await fetch_text(session, url)
+            except aiohttp.ClientResponseError as e:
+                if e.status == 404: #No more pages , returns a 404 error
+                    break
+                raise
+            try:
+                soup = BeautifulSoup(html, 'html.parser')
+                products_of_page = [{
+                    **json.loads(article["data-google-analytics-item-value"]),
+                    **{"url":article.a.get("href", None)},
+                    **{"price_per_unit":list(filter(lambda x: x != '' ,article.find("div", attrs={"class":"measurment-unit-row"}).text.strip().split("\n"))) }
+                }
+                for article in soup.find_all("article")]
+                if len(products_of_page) == 0:
+                    break
+                products.extend(products_of_page)
+            except Exception:
+                logger.exception("Error parsing products from %s", url)
+                continue
+
+            page += 1
+
+        return products
 
     def _parse_product(self, product: dict)-> Product:
         #contains both price per unit and unit in the form of a list``
@@ -52,7 +67,6 @@ class MyMarketScraper(BaseScraper):
         else:
             price_per_unit = ''
             unit = ''
-            
         return Product(
             product_id= product["id"],
             title= product["name"],
@@ -61,17 +75,20 @@ class MyMarketScraper(BaseScraper):
             price= product["price"],
             price_per_unit= float(price_per_unit) if price_per_unit !='' else None,
             unit= unit,
-            url= product["url"]
+            url= product["url"],
+            product_type_level_1=product["category"],
+            product_type_level_2=product["category2"],
+            product_type_level_3=product["category3"]
         )
     
-    @track(desc="My Market", unit="product")
-    async def fetch_products(self):
-        categories = self._fetch_categories()
-        sem = asyncio.Semaphore(10)
-
+    async def fetch_products(self) -> AsyncGenerator[Product, None]:
         async with aiohttp.ClientSession() as session:
-            tasks = [self._fetch_products_of_category(cat, session, sem) for cat in categories]
+            categories = await self._fetch_categories(session)
+            tasks = [self._fetch_products_of_category(cat, session) for cat in categories]
             for coro in asyncio.as_completed(tasks):
                 products_of_category = await coro
                 for product in products_of_category:
-                    yield self._parse_product(product)
+                    try:
+                        yield self._parse_product(product)
+                    except Exception:
+                        logger.exception("Failed to parse product, skipping: %s", product)

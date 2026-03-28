@@ -6,3 +6,5 @@ openpyxl
 sqlalchemy
 pyodbc
 python-dotenv
+openai
+asyncio

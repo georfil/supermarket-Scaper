@@ -1,6 +1,6 @@
 import asyncio
 from config import setup_logging
-from scrapers.main import *
+from scrapers import *
 from pipeline.main import run_all_scrapers, clean_products
 from db.main import run_db_pipeline
 
@@ -8,9 +8,9 @@ setup_logging()
 
 
 SCRAPERS = [
-    AbScraper(),
-    SklavenitisScraper(),
-    GalaxiasScraper(),
+    # AbScraper(),
+    # SklavenitisScraper(),
+    # GalaxiasScraper(),
     MyMarketScraper()
 ]
 

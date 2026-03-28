@@ -1,0 +1,1 @@
+from pipeline.categorise.runner import run_categorisation

@@ -2,7 +2,7 @@ import time
 import asyncio
 from models.product import Product
 import logging
-from scrapers.main.base import BaseScraper
+from scrapers.base import BaseScraper
 
 
 logger = logging.getLogger(__name__)

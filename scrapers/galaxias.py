@@ -1,13 +1,17 @@
 from scrapers.base import BaseScraper
-from models.product import Product
+from models import Product
+from typing import AsyncGenerator
+from utils.http import fetch_json
 import asyncio
 import aiohttp
-import requests
-from utils.progress import track
+import logging
+
+logger = logging.getLogger(__name__)
 
 class GalaxiasScraper(BaseScraper):
 
-    def __init__(self):
+    def __init__(self) -> None:
+        super().__init__()
         self.url = "https://galaxias.shop/api/graphql"
         self.headers = {
             "cookie": "Path=%2F",
@@ -17,12 +21,12 @@ class GalaxiasScraper(BaseScraper):
         }
 
 
-    def getBrands(self) -> dict:
+    async def get_brands(self, session: aiohttp.ClientSession) -> dict[str, str]:
         """Fetches all brands of Galaxias
 
         Returns:
-            A dict with brand_id - brand_name 
-        
+            A dict with brand_id - brand_name
+
         """
         query = """
         {
@@ -48,20 +52,19 @@ class GalaxiasScraper(BaseScraper):
         }
         """
 
-        querystring = {"query": query}
-        brands = {}
-        
-        response = requests.get(url = self.url, headers = self.headers, params =querystring) 
-        data =  response.json()
-        aggregations = data['data']['products']['aggregations']
-        for aggregation_type in aggregations:
-            if aggregation_type['attribute_code'] == 'keyvoto_brand':
-                brands = {option['value']:option["label"] for option in aggregation_type['options']}
-                return brands
-                    
-        return brands
+        try:
+            data = await fetch_json(session, self.url, headers=self.headers, params={"query": query})
+            aggregations = data['data']['products']['aggregations']
+            for aggregation_type in aggregations:
+                if aggregation_type['attribute_code'] == 'keyvoto_brand':
+                    return {option['value']: option["label"] for option in aggregation_type['options']}
+        except (KeyError, TypeError):
+            logger.exception("Unexpected response structure when fetching brands")
+            raise
 
-    def _fetch_total_pages(self) -> int:
+        return {}
+
+    async def _fetch_total_pages(self, session: aiohttp.ClientSession) -> int:
         query = """
         {
         categoryList(filters: {ids: {eq: "59"}}) {
@@ -99,13 +102,15 @@ class GalaxiasScraper(BaseScraper):
         }
         """
 
-        querystring = {"query":query}
-        response = requests.get(url=self.url, headers=self.headers, params= querystring) 
-        data = response.json()
-        return data['data']['products']['page_info']['total_pages']
+        try:
+            data = await fetch_json(session, self.url, headers=self.headers, params={"query": query})
+            return data['data']['products']['page_info']['total_pages']
+        except (KeyError, TypeError):
+            logger.exception("Unexpected response structure when fetching total pages")
+            raise
             
 
-    async def _fetch_page(self, session:aiohttp.ClientSession, page:int, sem : asyncio.Semaphore):
+    async def _fetch_page(self, session: aiohttp.ClientSession, page: int) -> list[dict]:
         query = """
         {
         categoryList(filters: {ids: {eq: "59"}}) {
@@ -143,15 +148,13 @@ class GalaxiasScraper(BaseScraper):
         }
         """
 
-        querystring = {"query":query}
-        async with sem:
-            async with session.get(url=self.url, headers=self.headers, params= querystring) as response:
-                data = await response.json()
-                return data['data']['products']['items']
+        async with self.sem:
+            data = await fetch_json(session, self.url, headers=self.headers, params={"query": query})
+            return data['data']['products']['items']
 
 
 
-    def _parse_product(self, product: dict, brands:dict) -> Product:
+    def _parse_product(self, product: dict, brands: dict[str, str]) -> Product:
         return Product(
             product_id=product['sku'],
             title = product['name'],
@@ -163,20 +166,18 @@ class GalaxiasScraper(BaseScraper):
             url = "https://galaxias.shop/product/"+ product['sku'],
         )
     
-    @track(desc="Galaxias", unit="product")
-    async def fetch_products(self):
-        brands = self.getBrands()
-
-        sem = asyncio.Semaphore(10)
+    async def fetch_products(self) -> AsyncGenerator[Product, None]:
         async with aiohttp.ClientSession() as session:
+            brands = await self.get_brands(session)
+            total_pages = await self._fetch_total_pages(session)
 
-        
-            total_pages = self._fetch_total_pages()
-
-            tasks = [self._fetch_page(session, page, sem) for page in range(1, total_pages + 1)]
+            tasks = [self._fetch_page(session, page) for page in range(1, total_pages + 1)]
             for coro in asyncio.as_completed(tasks):
                 product_page = await coro
                 for product in product_page:
-                    yield self._parse_product(product, brands)
+                    try:
+                        yield self._parse_product(product, brands)
+                    except Exception:
+                        logger.exception("Failed to parse product, skipping: %s", product)
             
     

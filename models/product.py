@@ -24,17 +24,17 @@ class Product:
     unique_product_id: str | None = None
 
 
-
 @dataclass
-class ProductUrl:
+class ProductToClassify:
     """
-    Class for supermarket products urls
+    Class for supermarket product which should be classified by llm
     
     """
     product_id: str
-    supermarket: str
-    url: str
-
+    name: str
+    original_category_level1: str
+    original_category_level2: str
+    original_category_level3: str
 
 
 

@@ -1,0 +1,255 @@
+2026-03-28 19:18:39,363 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:18:54,351 [WARNING] db.connection: Database is waking up, retrying in 5s...
+2026-03-28 19:18:59,354 [INFO] db.connection: Connecting to DB (attempt 2/3)...
+2026-03-28 19:19:15,327 [WARNING] db.connection: Database is waking up, retrying in 10s...
+2026-03-28 19:19:25,329 [INFO] db.connection: Connecting to DB (attempt 3/3)...
+2026-03-28 19:19:29,623 [INFO] db.connection: Database connection established
+2026-03-28 19:19:30,807 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 19:19:30,998 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:19:34,027 [INFO] db.connection: Database connection established
+2026-03-28 19:19:34,681 [INFO] db.categorise.queries: Fetched 0 products for classification.
+2026-03-28 19:22:19,002 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:22:23,043 [INFO] db.connection: Database connection established
+2026-03-28 19:22:24,048 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 19:22:24,254 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:22:27,191 [INFO] db.connection: Database connection established
+2026-03-28 19:22:38,809 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 19:34:43,751 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:34:47,810 [INFO] db.connection: Database connection established
+2026-03-28 19:34:49,002 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 19:34:49,212 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:34:52,159 [INFO] db.connection: Database connection established
+2026-03-28 19:35:03,564 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 19:35:14,168 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:35:18,067 [INFO] db.connection: Database connection established
+2026-03-28 19:35:19,009 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 19:35:19,206 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:35:22,248 [INFO] db.connection: Database connection established
+2026-03-28 19:35:34,313 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 19:48:16,885 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:48:21,023 [INFO] db.connection: Database connection established
+2026-03-28 19:48:22,027 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 19:48:22,239 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:48:25,189 [INFO] db.connection: Database connection established
+2026-03-28 19:48:36,659 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 19:48:55,590 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:48:59,484 [INFO] db.connection: Database connection established
+2026-03-28 19:49:00,630 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 19:49:00,821 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 19:49:03,946 [INFO] db.connection: Database connection established
+2026-03-28 19:49:15,555 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:11:47,473 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:12:02,484 [WARNING] db.connection: Database is waking up, retrying in 5s...
+2026-03-28 20:12:07,486 [INFO] db.connection: Connecting to DB (attempt 2/3)...
+2026-03-28 20:12:22,431 [WARNING] db.connection: Database is waking up, retrying in 10s...
+2026-03-28 20:12:32,432 [INFO] db.connection: Connecting to DB (attempt 3/3)...
+2026-03-28 20:12:41,796 [INFO] db.connection: Database connection established
+2026-03-28 20:12:42,969 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:12:43,155 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:12:46,487 [INFO] db.connection: Database connection established
+2026-03-28 20:12:48,872 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:13:12,315 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:13:12,315 [INFO] pipeline.categorise.runner: {"results":[{"id":"ab7062267","type_code":"518"},{"id":"ab7062268","type_code":"518"},{"id":"ab7062269","type_code":"518"},{"id":"ab7062319","type_code":"134"},{"id":"ab7062325","type_code":"134"},{"id":"ab7062327","type_code":"134"},{"id":"ab7062340","type_code":"134"},{"id":"ab7062348","type_code":"509"},{"id":"ab7062443","type_code":"384"},{"id":"ab7062470","type_code":"547"},{"id":"ab7062508","type_code":"347"},{"id":"ab7062509","type_code":"347"},{"id":"ab7062512","type_code":"347"},{"id":"ab7062519","type_code":"347"},{"id":"ab7062520","type_code":"347"},{"id":"ab7062613","type_code":"557"},{"id":"ab7062667","type_code":"433"},{"id":"ab7062669","type_code":"433"},{"id":"ab7062670","type_code":"433"},{"id":"ab7062712","type_code":"521"},{"id":"ab7062729","type_code":"228"},{"id":"ab7062761","type_code":"381"},{"id":"ab7062766","type_code":"414"},{"id":"ab7062768","type_code":"414"},{"id":"ab7062803","type_code":"628"},{"id":"ab7062822","type_code":"630"},{"id":"ab7062835","type_code":"630"},{"id":"ab7062838","type_code":"630"},{"id":"ab7062844","type_code":"630"},{"id":"ab7062869","type_code":"627"}]}
+2026-03-28 20:13:28,727 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:13:28,727 [INFO] pipeline.categorise.runner: {"results":[{"id":"ab7062928","type_code":"629"},{"id":"ab7062945","type_code":"625"},{"id":"ab7062955","type_code":"625"},{"id":"ab7062979","type_code":"633"},{"id":"ab7063017","type_code":"440"},{"id":"ab7063021","type_code":"440"},{"id":"ab7063026","type_code":"456"},{"id":"ab7063057","type_code":"508"},{"id":"ab7063063","type_code":"536"},{"id":"ab7063064","type_code":"447"},{"id":"ab7063084","type_code":"490"},{"id":"ab7063085","type_code":"490"},{"id":"ab7063087","type_code":"491"},{"id":"ab7063088","type_code":"491"},{"id":"ab7063152","type_code":"377"},{"id":"ab7063290","type_code":"614"},{"id":"ab7063367","type_code":"619"},{"id":"ab7063372","type_code":"631"},{"id":"ab7063373","type_code":"631"},{"id":"ab7063382","type_code":"22"},{"id":"ab7063392","type_code":"22"},{"id":"ab7063399","type_code":"22"},{"id":"ab7063469","type_code":"112"},{"id":"ab7063470","type_code":"112"},{"id":"ab7063477","type_code":"236"},{"id":"ab7063505","type_code":"518"},{"id":"ab7063536","type_code":"523"},{"id":"ab7063539","type_code":"156"},{"id":"ab7063565","type_code":"15"},{"id":"ab7063574","type_code":"241"}]}
+2026-03-28 20:13:42,325 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:13:42,325 [INFO] pipeline.categorise.runner: {"results":[{"id":"ab7063575","type_code":"241"},{"id":"ab7063577","type_code":"265"},{"id":"ab7063578","type_code":"535"},{"id":"ab7063580","type_code":"535"},{"id":"ab7063582","type_code":"248"},{"id":"ab7063585","type_code":"248"},{"id":"ab7063587","type_code":"248"},{"id":"ab7063652","type_code":"595"},{"id":"ab7063657","type_code":"595"},{"id":"ab7063679","type_code":"596"},{"id":"ab7063684","type_code":"596"},{"id":"ab7063697","type_code":"596"},{"id":"ab7063709","type_code":"596"},{"id":"ab7063720","type_code":"607"},{"id":"ab7063735","type_code":"609"},{"id":"ab7063764","type_code":"609"},{"id":"ab7063772","type_code":"604"},{"id":"ab7063808","type_code":"605"},{"id":"ab7063827","type_code":"604"},{"id":"ab7063828","type_code":"604"},{"id":"ab7063837","type_code":"609"},{"id":"ab7063845","type_code":"600"},{"id":"ab7063852","type_code":"600"},{"id":"ab7063853","type_code":"600"},{"id":"ab7063867","type_code":"600"},{"id":"ab7063870","type_code":"600"},{"id":"ab7063871","type_code":"600"},{"id":"ab7063882","type_code":"600"},{"id":"ab7063884","type_code":"600"},{"id":"ab7063901","type_code":"612"}]}
+2026-03-28 20:13:46,718 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:13:46,718 [INFO] pipeline.categorise.runner: {"results":[{"id":"ab7063916","type_code":612},{"id":"ab7063917","type_code":612},{"id":"ab7063933","type_code":603},{"id":"ab7063958","type_code":377},{"id":"ab7063960","type_code":151},{"id":"ab7063962","type_code":151},{"id":"ab7063964","type_code":381},{"id":"ab7063968","type_code":157},{"id":"ab7063998","type_code":464},{"id":"ab7064007","type_code":412}]}
+2026-03-28 20:20:18,718 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:20:22,945 [INFO] db.connection: Database connection established
+2026-03-28 20:20:24,001 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:20:24,207 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:20:27,123 [INFO] db.connection: Database connection established
+2026-03-28 20:20:40,165 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:21:02,795 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:21:36,049 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:21:40,050 [INFO] db.connection: Database connection established
+2026-03-28 20:21:41,065 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:21:41,263 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:21:44,343 [INFO] db.connection: Database connection established
+2026-03-28 20:21:57,556 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:22:21,569 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:22:49,489 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:23:23,800 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:23:40,760 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:34:18,273 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:34:22,274 [INFO] db.connection: Database connection established
+2026-03-28 20:34:23,459 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:34:23,656 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:34:26,783 [INFO] db.connection: Database connection established
+2026-03-28 20:34:39,756 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:35:13,235 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:35:59,427 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:36:03,453 [INFO] db.connection: Database connection established
+2026-03-28 20:36:04,440 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:36:04,634 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:36:07,493 [INFO] db.connection: Database connection established
+2026-03-28 20:36:20,414 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:36:37,981 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:37:11,589 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:37:15,464 [INFO] db.connection: Database connection established
+2026-03-28 20:37:16,413 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:37:16,609 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:37:19,638 [INFO] db.connection: Database connection established
+2026-03-28 20:37:32,781 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:37:47,901 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:38:03,580 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:38:18,298 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:38:24,000 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:39:51,315 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:39:55,343 [INFO] db.connection: Database connection established
+2026-03-28 20:39:56,526 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:39:56,734 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:39:59,717 [INFO] db.connection: Database connection established
+2026-03-28 20:40:12,809 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:40:27,433 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:40:40,960 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:40:56,624 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:41:02,658 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:41:40,682 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:41:44,484 [INFO] db.connection: Database connection established
+2026-03-28 20:41:45,599 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:41:45,796 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:41:48,791 [INFO] db.connection: Database connection established
+2026-03-28 20:42:01,891 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:42:26,339 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:42:41,876 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:42:57,026 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:43:02,728 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:45:40,437 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:45:44,466 [INFO] db.connection: Database connection established
+2026-03-28 20:45:45,449 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:45:45,653 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:45:48,512 [INFO] db.connection: Database connection established
+2026-03-28 20:46:02,752 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:46:06,674 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:46:09,173 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:46:11,775 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:46:13,072 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:49:38,320 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:49:42,379 [INFO] db.connection: Database connection established
+2026-03-28 20:49:43,584 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:49:43,776 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:49:46,652 [INFO] db.connection: Database connection established
+2026-03-28 20:49:59,477 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:50:02,978 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:50:05,596 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:50:08,226 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:50:09,620 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:59:25,292 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:59:29,282 [INFO] db.connection: Database connection established
+2026-03-28 20:59:30,255 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 20:59:30,451 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 20:59:33,570 [INFO] db.connection: Database connection established
+2026-03-28 20:59:46,774 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 20:59:51,004 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:59:53,736 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:59:56,382 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 20:59:57,892 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:03:16,447 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 21:03:20,686 [INFO] db.connection: Database connection established
+2026-03-28 21:03:21,946 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 21:03:22,148 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 21:03:25,499 [INFO] db.connection: Database connection established
+2026-03-28 21:03:38,767 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 21:03:42,674 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:03:45,284 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:03:49,051 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:03:51,068 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:10:53,912 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 21:10:57,983 [INFO] db.connection: Database connection established
+2026-03-28 21:10:58,988 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 21:10:59,191 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 21:11:02,228 [INFO] db.connection: Database connection established
+2026-03-28 21:11:15,408 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 21:11:19,268 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:11:21,834 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:11:24,308 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:11:25,834 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:43:16,627 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 21:43:31,693 [WARNING] db.connection: Database is waking up, retrying in 5s...
+2026-03-28 21:43:36,696 [INFO] db.connection: Connecting to DB (attempt 2/3)...
+2026-03-28 21:43:51,721 [WARNING] db.connection: Database is waking up, retrying in 10s...
+2026-03-28 21:44:01,723 [INFO] db.connection: Connecting to DB (attempt 3/3)...
+2026-03-28 21:44:11,323 [INFO] db.connection: Database connection established
+2026-03-28 21:44:12,541 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 21:44:12,747 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 21:44:15,845 [INFO] db.connection: Database connection established
+2026-03-28 21:44:18,461 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 21:44:39,846 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:44:57,750 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:45:15,701 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 21:45:23,873 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:20:52,299 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:21:07,373 [WARNING] db.connection: Database is waking up, retrying in 5s...
+2026-03-28 22:21:12,378 [INFO] db.connection: Connecting to DB (attempt 2/3)...
+2026-03-28 22:21:27,430 [WARNING] db.connection: Database is waking up, retrying in 10s...
+2026-03-28 22:21:37,432 [INFO] db.connection: Connecting to DB (attempt 3/3)...
+2026-03-28 22:21:46,586 [INFO] db.connection: Database connection established
+2026-03-28 22:21:47,571 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 22:21:47,763 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:21:51,098 [INFO] db.connection: Database connection established
+2026-03-28 22:21:53,291 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 22:22:15,565 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:22:27,981 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:22:35,229 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:22:38,379 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:23:37,770 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:23:41,850 [INFO] db.connection: Database connection established
+2026-03-28 22:23:42,850 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 22:23:43,050 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:23:46,040 [INFO] db.connection: Database connection established
+2026-03-28 22:23:59,099 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 22:24:22,914 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:24:37,340 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:24:51,561 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:24:56,906 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:25:32,539 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:25:36,560 [INFO] db.connection: Database connection established
+2026-03-28 22:25:37,560 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 22:25:37,750 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:25:40,738 [INFO] db.connection: Database connection established
+2026-03-28 22:25:53,876 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 22:26:10,193 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:26:24,927 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:26:39,926 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:26:45,181 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:27:11,038 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:27:14,843 [INFO] db.connection: Database connection established
+2026-03-28 22:27:15,959 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 22:27:16,147 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:27:19,147 [INFO] db.connection: Database connection established
+2026-03-28 22:27:21,550 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 22:27:32,337 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:27:38,840 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:27:47,281 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:27:49,884 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:28:31,809 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:28:35,896 [INFO] db.connection: Database connection established
+2026-03-28 22:28:37,193 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 22:28:37,395 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:28:40,632 [INFO] db.connection: Database connection established
+2026-03-28 22:28:54,130 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 22:29:15,330 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:29:35,580 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:29:55,080 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:30:08,797 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:30:48,641 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:30:52,800 [INFO] db.connection: Database connection established
+2026-03-28 22:30:53,931 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 22:30:54,129 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:30:57,860 [INFO] db.connection: Database connection established
+2026-03-28 22:31:11,092 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 22:31:23,289 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:31:42,304 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:32:02,392 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:32:13,383 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:35:45,697 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:35:49,762 [INFO] db.connection: Database connection established
+2026-03-28 22:35:50,939 [INFO] db.categorise.queries: Fetched 707 categories for classification.
+2026-03-28 22:35:51,134 [INFO] db.connection: Connecting to DB (attempt 1/3)...
+2026-03-28 22:35:54,179 [INFO] db.connection: Database connection established
+2026-03-28 22:36:07,220 [INFO] db.categorise.queries: Fetched 42383 products for classification.
+2026-03-28 22:36:22,340 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-28 22:36:27,769 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"

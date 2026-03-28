@@ -1,1 +1,0 @@
-from pipeline.details.transform_by_supermarket import transform_by_supermarket

@@ -1,1 +1,0 @@
-from db.details.queries import get_products
